@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>page 分页</title>
+		<link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
+		<script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.box{
+				padding: 0 0 30px 0;
+			}
+			.der{
+				width: 700px;
+				margin-left: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<!--分页-->
+			<div id="demo0"></div>
+			<div id="demo1"></div>
+			<br /><br /><br />
+			
+			<!--颜色选择器-->
+			<div style="margin-left: 30px;">
+			  <form class="layui-form" action="" lay-filter="formEdit">
+			    <div class="layui-form-item">
+			      <div class="layui-input-inline" style="width: 120px;">
+			        <input type="text" value="" name="color" placeholder="请选择颜色" class="layui-input" id="test-form-input">
+			      </div>
+			      <div class="layui-inline" style="left: -11px;">
+			        <div id="test-form"></div>
+			      </div>
+			    </div>
+			  </form>
+			</div>
+			<br /><br /><br />
+			<!--滑块-->
+			<div id="slideTest1" class="der"></div>
+			<br /><br /><br />
+			<p>value数值为:<span id="num"></span></p>
+			
+			<!--评分 -->
+			
+			<div id="rate1"></div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	layui.use(['laypage','rate','layer','colorpicker',"form",'slider'],function(){
+		var laypage=layui.laypage;
+		var layer=layui.layer;
+		var colorpicker=layui.colorpicker,
+			form=layui.form,
+			slider=layui.slider;
+		var rate=layui.rate;  
+		
+		 laypage.render({
+		    elem: 'demo0',
+		    count: 50 //数据总数
+		  });
+		  
+		  laypage.render({
+		    elem: 'demo1',
+		    count: 100, //数据总数
+		    limit:10, //每页条数
+		    limits:[5,10,20,30,50], //页码分组
+		    curr:3,  //起始页
+		    groups:3, //显示连续
+		    layout:["prev","page","next","count","limit","skip","refresh"],
+		    theme:"#00FF40",
+		    jump:function(obj,first){
+		      //obj包含了当前分页的所有参数，比如：
+			   //console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+			    //console.log(obj.limit); //得到每页显示的条数
+			    console.log(obj)
+			    //首次不执行
+			    if(!first){
+			      //do something
+			      console.log("非首次！")
+			    }
+		    }
+		  });
+		  
+		  
+		  //颜色选择器
+		  colorpicker.render({
+		    elem: '#test-form',
+		    
+		    change: function(color){
+		      console.log(color)
+		      form.val('formEdit',{
+		      	"color":color
+		      })
+		    }
+  		  });
+  		  
+  		  //滑块
+  		  
+  		   	slider.render({
+			    elem: '#slideTest1',  //绑定元素
+			    type:"default", //default（水平滑块）、vertical（垂直滑块）
+			    min:30,
+			    max:100,
+			    //range:true,//是否开启滑块的范围拖拽
+			    //value:[40,45], //初始值
+			    tips:true,
+			    disabled:false,
+			    showstep:true,
+			    step:5,
+			    input:true, //开启input（number类型）输入模式
+			    change:function(value){
+			    	$("#num").html(value)
+			    }, //滑块内容改变事件回调
+			    theme:"#f00", //主题，进度条颜色
+			    tips:true, //是否显示tips内容
+			});
+		  
+		  
+		  //评分
+		   rate.render({
+		    elem: '#rate1',
+		    value:3, //初始值
+		    theme:"#ff0", //主题色
+		    half:true, //设定组件是否可以选择半星
+		    text:true ,//是否显示评分对应的内容	
+		    readonly:false, //是否只读，即只用于展示而不可点
+		    
+		    setText: function(value){
+			    var obj = {
+			      '1': '极差',
+			      '2': '差', 
+			      '3': '中等', 
+			      '4': '好'
+			    };
+			    this.span.text(obj[value] || ( value + "星"));
+			},
+		    choose :function(value){
+		    	console.log("choose")
+		    }
+		  })
+		  
+		  
+	})
+</script>
+
+

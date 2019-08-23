@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>layui_login</title>
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+		<script src="layui/layui.all.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+		.box{
+			width: 500px;
+			height: auto;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			/*border: 1px solid #bbb;*/
+			padding: 10px 8px;
+			border-radius: 8px;
+			/*background: #00B6B6;*/
+			transform: translate(-50%,-50%);
+			box-shadow: 0 -10px 20px #00E873;
+		}
+		.box h1 strong{
+			display: block;
+		}
+		.box h1{
+			text-align: center;
+			font-size: 25px;
+			color: #45bda6;
+		    text-shadow: 0 0 1px #0e947a;
+		    margin-bottom: 15px;
+		}
+		.box h1 em{
+			font-size: 16px;
+		}
+		.laui-form-item {
+			position: relative;
+			margin: 15px 0;
+		}
+		.login_icon{
+			position: absolute;
+			left: 10px;
+			line-height: 38px;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		.layui-input{
+			padding-left:40px ;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<h1>
+				 <strong>XXXXXX管理系统后台</strong>
+				 <em>Management System</em>
+			</h1>
+			<form  class="layui-form">
+				<div class="laui-form-item ">
+					<i class="layui-icon login_icon">&#xe612;</i>
+					<input type="text"  class="layui-input" name="user" lay-verify="username" placeholder="请输入用户名" autocomplete="off" />
+				</div>
+				<div class="laui-form-item ">
+					<i class="layui-icon login_icon">&#xe673;</i>
+					<input type="password"  class="layui-input" name="passwordL" lay-verify="pass" placeholder="请输入密码"  autocomplete="off"/>
+				</div>
+				<div class="laui-form-item ">
+					<i class="layui-icon login_icon">&#xe679;</i>
+					<input type="text" style="width: 40%;" name="code"  class="layui-input" placeholder="请输入验证码" autocomplete="off" />
+				</div>
+				<div class="laui-form-item ">
+					 <div class="layui-input-block">
+					      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+					      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+					</div>
+				</div>
+			</form>
+			
+			
+			<div class="layui-user-icon">
+			</div>
+		</div>
+	</body>
+</html>
+<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function(){
+		var layer = layui.layer;
+		var form = layui.form;
+		
+		form.verify({
+			  username: function(value, item){ //value：表单的值、item：表单的DOM对象
+			    if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+			      return '用户名不能有特殊字符';
+			    }
+			    if(/(^\_)|(\__)|(\_+$)/.test(value)){
+			      return '用户名首尾不能出现下划线\'_\'';
+			    }
+			    if(/^\d+\d+\d$/.test(value)){
+			      return '用户名不能全为数字';
+			    }
+			  }
+			  
+			  //我们既支持上述函数式的方式，也支持下述数组的形式
+			  //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
+			  ,pass: [
+			    /^[\S]{6,12}$/
+			    ,'密码必须6到12位，且不能出现空格'
+			  ] 
+			}); 
+		
+		form.on('submit(formDemo)', function(data){
+			console.log(data)
+			window.location.href="home/home.html";
+			return false
+		});
+		
+		
+		
+	})
+  
+ 
+</script>

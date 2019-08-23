@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+		<!--<script src="../layui/layui.all.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="../layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.layui-tab-content .layui-tab-item iframe {
+				width: 100%;
+				/*min-height:410px;*/
+				/*height: 100%;*/
+				border: none;
+			}
+			
+			.layui-tab-title .layui-this {
+				color: #fff;
+				background: #00abff;
+			}
+			.layui-nav .layui-nav-item.left{
+				display: none;
+			}
+			#admin-home i.layui-icon{
+				display: none;
+			}
+			.aa{
+				display:block;	
+				background-color: #fff;
+				border-bottom: 1px solid #ccc;
+				margin-left: 0 !important;
+			}
+			.rightJ{
+				display: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 99;
+			}
+			.layui-btn-primary:hover{
+				background: #009688;
+				color: #fff;
+				opacity: 1;
+			}
+			.layui-btn-primary{
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="layui-layout-body">
+			<div class="layui-layout layui-layout-admin">
+				<!--header-->
+				<div class="layui-header">
+					<div class="layui-logo">layui 后台布局</div>
+					<!--header导航-->
+
+					<ul class="layui-nav layui-layout-left">
+						<li class="layui-nav-item right" >
+							<button class="layui-btn layui-btn-normal layui-btn-sm">
+								<!--<i class="layui-icon layui-icon-shrink-right"></i>-->
+								<i class="layui-icon layui-icon-shrink-right"></i>
+								
+							</button>
+						</li>
+						<li class="layui-nav-item left">
+							<button class="layui-btn layui-btn-normal layui-btn-sm">
+								<!--<i class="layui-icon layui-icon-spread-left"></i>-->
+								<i class="layui-icon layui-icon-spread-left"></i>
+							</button>
+						</li>
+					</ul>
+
+					<ul class="layui-nav layui-layout-right">
+						<li class="layui-nav-item">
+							<a href="">控制台<span class="layui-badge">9</span></a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="">个人中心<span class="layui-badge-dot"></span></a>
+						</li>
+						<li class="layui-nav-item">
+							<a href=""><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
+							<dl class="layui-nav-child" style="background: red;">
+								<dd>
+									<a href="javascript:;">修改信息</a>
+								</dd>
+								<dd>
+									<a href="javascript:;">安全管理</a>
+								</dd>
+								<dd>
+									<a href="javascript:;">退了</a>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+					<!--end-->
+
+				</div>
+				<!--end-->
+				<!--slider-->
+				<div class="layui-side layui-bg-black">
+					<div class="layui-side-scroll" id="slideScroll">
+						<!--侧边栏-->
+						<ul class="layui-nav layui-nav-tree" lay-shrink="all" lay-filter="test">
+							<li class="layui-nav-item layui-this">
+								<a href="javascript:;">首页</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">默认展开</a>
+								<dl class="layui-nav-child">
+									<dd>
+										<a href="javascript:;" data-url="../button/button.html">
+											<i class="layui-icon layui-icon-template-1" data-icon='layui-icon layui-icon-template-1'></i>
+											<span>Button 按钮</span>
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:;" data-url="../table/table.html">
+											<i class="layui-icon layui-icon-table" data-icon='layui-icon layui-icon-table'></i>
+											<span>Table 表格</span>
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:;" data-url="../upload/upload.html">
+											<i class="layui-icon layui-icon-upload" data-icon='layui-icon layui-icon-upload-drag'></i>
+											<span>Upload 上传</span>
+										</a>
+									</dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">解决方案</a>
+								<dl class="layui-nav-child">
+									<dd>
+										<a href="javascript:;" data-url="../form/form.html">
+											<i class="layui-icon layui-icon-form" data-icon='layui-icon layui-icon-form'></i>
+											<span>Form 表单</span>
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:;" data-url="../menu/menu.html">
+											<i class="layui-icon layui-icon-menu-fill" data-icon='layui-icon layui-icon-menu-fill'></i>
+											<span>Menu 导航</span>
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:;" data-url="../card/card.html">
+											<i class="layui-icon layui-icon-layer" data-icon='layui-icon layui-icon-layer'></i>
+											<span>Card 面板手风琴</span>
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:;" data-url="../badge/badge.html">
+											<i class="layui-icon layui-icon-layer" data-icon='layui-icon layui-icon-layer'></i>
+											<span>Badge 徽章</span>
+										</a>
+									</dd>
+								</dl>
+							</li>
+							
+							<li class="layui-nav-item">
+								<a href="javascript:;">解决方案2</a>
+								<dl class="layui-nav-child">
+									<dd>
+										<a href="javascript:;" data-url="../time/time.html">
+											<i class="layui-icon layui-icon-date" data-icon='layui-icon layui-icon-date'></i>
+											<span>Timeline 时间线</span>
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:;" data-url="../animate/animate.html">
+											<i class="layui-icon layui-icon-about" data-icon='layui-icon layui-icon-about'></i>
+											<span>animate 动画</span>
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:;" data-url="../layer/layer.html">
+											<i class="layui-icon layui-icon-about" data-icon='layui-icon layui-icon-about'></i>
+											<span>layer 弹出层</span>
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:;" data-url="../date/date.html">
+											<i class="layui-icon layui-icon-date" data-icon='layui-icon layui-icon-date'></i>
+											<span>date 时间框</span>
+										</a>
+									</dd>
+								</dl>
+							</li>
+						
+							<li class="layui-nav-item">
+								<a href="javascript:;" data-url="../page/page.html">
+									<i class="layui-icon layui-icon-date" data-icon='layui-icon layui-icon-date'></i>
+									<span>page 分页</span>
+								</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">解决方案3</a>
+								<dl class="layui-nav-child">
+									<dd>
+										<a href="javascript:;" data-url="../tab/tab.html">
+											<i class="layui-icon layui-icon-date" data-icon='layui-icon layui-icon-date'></i>
+											<span>Tab 选项卡</span>
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:;" data-url="../transfer/transfer.html">
+											<i class="layui-icon layui-icon-date" data-icon='layui-icon layui-icon-date'></i>
+											<span>Transfer 穿梭框</span>
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:;" data-url="../tree/tree.html">
+											<i class="layui-icon layui-icon-date" data-icon='layui-icon layui-icon-date'></i>
+											<span>Tree 树形节点</span>
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:;" data-url="../flow/flow.html">
+											<i class="layui-icon layui-icon-date" data-icon='layui-icon layui-icon-date'></i>
+											<span>flow 滚动加载</span>
+										</a>
+									</dd>
+								</dl>
+								
+								
+							</li>
+							
+							
+						</ul>
+
+						<!--end-->
+					</div>
+				</div>
+				<!--end-->
+
+				<div class="layui-body" style="bottom: 0;border-left: solid 2px #2299ee;">
+					<!-- 内容主体区域 -->
+					<div class="layui-tab" style="margin-top: 0;" lay-filter="demo" id="larry-tab" lay-allowclose="true">
+						<div class="rightJ">
+									<button type="button" data-name="refreshCurrent" class="layui-btn layui-btn-primary  layui-btn-sm aa">
+									  	<i class="layui-icon">&#xe608;</i> 刷新页面
+									</button>
+									<button type="button" data-name="closeCurrent" class="layui-btn layui-btn-primary  layui-btn-sm aa">
+									  	<i class="layui-icon">&#xe608;</i> 关闭当前页面
+									</button>
+									<button type="button" data-name="closeOthers" class="layui-btn layui-btn-primary layui-btn-sm aa">
+									  	<i class="layui-icon">&#xe608;</i> 关闭其他页面
+									</button>
+									<button type="button" data-name="closeAll" class="layui-btn layui-btn-primary layui-btn-sm aa">
+									  	<i class="layui-icon">&#xe608;</i> 关闭所有页面
+									</button>								
+						</div>
+						<ul class="layui-tab-title">
+							<li class="layui-this" id="admin-home">
+								<i class="layui-icon layui-icon-snowflake"></i>
+								<em>首页</em>
+							</li>
+						</ul>
+						<div class="layui-tab-content">
+							<div class="layui-tab-item layui-show">
+								<iframe src="AA.html" data-id='0'></iframe>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="layui-footer" style="z-index: 998; border-left: solid 2px #2299ee; text-align: center;">
+					<!-- 底部固定区域 -->
+					© layui.com - 底部固定区域
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+
+</html>
+<script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+<script src="home.js" type="text/javascript" charset="utf-8"></script>
